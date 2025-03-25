@@ -61,3 +61,7 @@ input, textarea {
 .highlight {
   @apply text-blue-400;
 }
+.font-murs {
+  font-family: var(--font-murs);
+  letter-spacing: 0.02em;
+}
