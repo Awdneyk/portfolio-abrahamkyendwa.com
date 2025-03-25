@@ -1,57 +1,89 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import PageTransition from "@/components/PageTransition";
 
 export default function Home() {
   return (
+    <PageTransition>
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 md:py-32 flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                I'm Abraham.
-              </h1>
-              <h2 className="text-2xl md:text-3xl mb-8">
-                Currently studying to be an electrical engineer.
-              </h2>
-              <p className="text-lg text-gray-300 mb-8">
-                This portfolio showcases my engineering experience, methods, and 
-                outcomes in creating innovative electrical solutions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <Link 
-                  href="/projects" 
-                  className="button"
-                >
-                  View My Work
-                </Link>
-                <Link 
-                  href="/contact" 
-                  className="button bg-transparent border border-white hover:bg-white hover:text-black"
-                >
-                  Get In Touch
-                </Link>
-              </div>
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <div className="relative w-64 h-64 md:w-72 md:h-72">
-                <div className="w-full h-full rounded-full overflow-hidden border-4 border-gray-800">
-                  <Image 
-                    src="/profile.jpg" 
-                    alt="John Smith" 
-                    width={300} 
-                    height={300}
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <motion.h1 
+          className="text-5xl md:text-6xl font-bold mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          I'm Abraham.
+        </motion.h1>
+        <motion.h2 
+          className="text-2xl md:text-3xl mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          Currently studying to be an electrical engineer.
+        </motion.h2>
+        <motion.p 
+          className="text-lg text-gray-300 mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          This portfolio showcases my engineering experience, methods, and 
+          outcomes in creating innovative electrical solutions.
+        </motion.p>
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <Link 
+            href="/projects" 
+            className="button"
+          >
+            View My Work
+          </Link>
+          <Link 
+            href="/contact" 
+            className="button bg-transparent border border-white hover:bg-white hover:text-black"
+          >
+            Get In Touch
+          </Link>
+        </motion.div>
+      </div>
+      <motion.div 
+        className="flex justify-center md:justify-end"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ 
+          duration: 0.7,
+          type: "spring",
+          stiffness: 100
+        }}
+      >
+        <div className="relative w-64 h-64 md:w-72 md:h-72">
+          <div className="w-full h-full rounded-full overflow-hidden border-4 border-gray-800">
+            <Image 
+              src="/profile.jpg" 
+              alt="Abraham" 
+              width={300} 
+              height={300}
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
-      </section>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* Expertise Section */}
       <section className="py-16 bg-gray-900">
@@ -154,5 +186,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </PageTransition>
   );
 }

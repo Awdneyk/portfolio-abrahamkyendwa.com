@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -62,7 +63,17 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="font-bold text-2xl">
-              <span className="text-white font-murs">AK!</span>
+              <motion.span
+                className="text-white font-murs"
+                initial={{ opacity: 1 }}
+                whileHover={{ 
+                  scale: 1.1, 
+                  color: "#60A5FA", // Blue color to match your theme
+                  transition: { duration: 0.2 }
+                }}
+              >
+                AK!
+              </motion.span>
             </Link>
           </div>
           

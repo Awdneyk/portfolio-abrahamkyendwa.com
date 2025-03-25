@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type ProjectCardProps = {
   id: string;
@@ -11,7 +12,18 @@ type ProjectCardProps = {
 
 export default function ProjectCard({ id, title, description, image, tags }: ProjectCardProps) {
   return (
-    <div id={id} className="card overflow-hidden">
+    <motion.div 
+      id={id} 
+      className="card overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ 
+        y: -5, 
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
+      }}
+    >
       <div className="aspect-video relative bg-gray-800">
         {image ? (
           <Image
@@ -43,6 +55,6 @@ export default function ProjectCard({ id, title, description, image, tags }: Pro
           View Case Study →
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
