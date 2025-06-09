@@ -2,5 +2,11 @@
   "extends": [
     "next/core-web-vitals",
     "next/typescript"
-  ]
+  ],
+  "scripts": {
+  "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+},
+"rules": {
+  
+}
 }
