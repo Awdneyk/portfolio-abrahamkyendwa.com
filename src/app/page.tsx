@@ -19,7 +19,7 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          I'm Abraham.
+          I&apos;m Abraham.
         </motion.h1>
         <motion.h2 
           className="text-2xl md:text-3xl mb-8"

@@ -55,7 +55,7 @@ export default function ContactForm() {
       
       {isSubmitted && (
         <div className="p-4 bg-green-900/50 border border-green-500 text-green-200 rounded-md">
-          Your message has been sent successfully! I'll get back to you soon.
+          Your message has been sent successfully! I&apos;ll get back to you soon.
         </div>
       )}
       

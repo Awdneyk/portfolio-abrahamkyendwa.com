@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 import ProjectCard from "@/components/ProjectCard";
 import PageTransition from "@/components/PageTransition";
 
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
               <div className="card p-8">
                 <h3 className="text-xl font-bold mb-4">Problem Definition</h3>
                 <p className="text-gray-300">
-                  Every project begins with clearly understanding the problem we're 
+                  Every project begins with clearly understanding the problem we&apos;re 
                   solving and for whom. This clarity guides all subsequent decisions.
                 </p>
               </div>
@@ -231,10 +231,10 @@ export default function ProjectsPage() {
               <div className="card p-8">
                 <h3 className="text-xl font-bold mb-4">First Principles Thinking</h3>
                 <p className="text-gray-300 mb-4">
-                  I approach complex problems by breaking them down to their fundamental truths and then building solutions from the ground up. This methodology helps me create innovative solutions that aren't constrained by conventional thinking.
+                  I approach complex problems by breaking them down to their fundamental truths and then building solutions from the ground up. This methodology helps me create innovative solutions that aren&apos;t constrained by conventional thinking.
                 </p>
                 <p className="text-gray-300">
-                  By questioning assumptions and focusing on what is physically possible, I've been able to bypass traditional constraints and develop more efficient electrical systems.
+                  By questioning assumptions and focusing on what is physically possible, I&apos;ve been able to bypass traditional constraints and develop more efficient electrical systems.
                 </p>
               </div>
               
@@ -321,7 +321,7 @@ export default function ProjectsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-6">Interested in working together?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              I'm always open to discussing new projects, innovative ideas, and opportunities to create impactful electrical engineering solutions.
+              I&apos;m always open to discussing new projects, innovative ideas, and opportunities to create impactful electrical engineering solutions.
             </p>
             <Link
               href="/contact"
