@@ -14,7 +14,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               Have a project in mind or want to discuss potential opportunities? 
-              I&apos;d love to hear from you.
+              I'd love to hear from you.
             </p>
           </div>
         </section>
@@ -102,7 +102,7 @@ export default function ContactPage() {
         <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between">
             <div className="mb-6 sm:mb-0 text-center sm:text-left">
-              <h2 className="text-2xl font-bold">Let&apos;s connect on LinkedIn</h2>
+              <h2 className="text-2xl font-bold">Let's connect on LinkedIn</h2>
               <p className="text-gray-300 mt-2">Stay updated with my latest projects and insights</p>
             </div>
             <a
