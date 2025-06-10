@@ -1,8 +1,12 @@
 "use client";
 import Link from "next/link";
 //import Image from "next/image";
+import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import PageTransition from "@/components/PageTransition";
+import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedButton from "@/components/AnimatedButton";
+import { staggerContainer, staggerItem } from "@/utils/animations";
 
 // This could be fetched from a database or API in a real application
 const projects = [
@@ -85,21 +89,37 @@ export default function ProjectsPage() {
     <PageTransition>
       <div className="min-h-screen">
         {/* Header */}
-        <section className="py-20 bg-gray-900">
+        <AnimatedSection className="py-20 bg-gray-900" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               The work to reaching delightful experiences.
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               A showcase of my engineering projects and the innovative solutions they provide.
-            </p>
+            </motion.p>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Project Methodology */}
-        <section className="py-16">
+        <AnimatedSection className="py-16" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <h2 className="text-3xl font-bold mb-6">The end in mind</h2>
               <p className="text-gray-300 max-w-3xl mx-auto">
                 By confidently answering these questions, we can better position 
@@ -107,37 +127,43 @@ export default function ProjectsPage() {
                 approach helps reduce risks, increase value to users, and unlock the 
                 full potential of a higher ROI.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="card p-8">
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.div className="card p-8" variants={staggerItem}>
                 <h3 className="text-xl font-bold mb-4">Problem Definition</h3>
                 <p className="text-gray-300">
                   Every project begins with clearly understanding the problem we&apos;re 
                   solving and for whom. This clarity guides all subsequent decisions.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="card p-8">
+              <motion.div className="card p-8" variants={staggerItem}>
                 <h3 className="text-xl font-bold mb-4">Systems Approach</h3>
                 <p className="text-gray-300">
                   I consider how each component interacts within the larger system, 
                   ensuring holistic solutions that address current needs while 
                   allowing for future expansion.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="card p-8">
+              <motion.div className="card p-8" variants={staggerItem}>
                 <h3 className="text-xl font-bold mb-4">Iterative Refinement</h3>
                 <p className="text-gray-300">
                   Through prototyping, testing, and refinement, I continuously 
                   improve designs to ensure optimal performance, efficiency, and 
                   user satisfaction.
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Detailed Featured Project */}
         <section className="py-16 bg-gray-900">
@@ -199,23 +225,38 @@ export default function ProjectsPage() {
         </section>
 
         {/* Projects Grid */}
-        <section className="py-16">
+        <AnimatedSection className="py-16" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12">All Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  id={project.id}
-                  title={project.title}
-                  description={project.description}
-                  image={project.image}
-                  tags={project.tags}
-                />
+            <motion.h2 
+              className="text-3xl font-bold mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              All Projects
+            </motion.h2>
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {projects.map((project, index) => (
+                <motion.div key={project.id} variants={staggerItem}>
+                  <ProjectCard
+                    id={project.id}
+                    title={project.title}
+                    description={project.description}
+                    image={project.image}
+                    tags={project.tags}
+                  />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Engineering Approach */}
         <section className="py-16 bg-gray-900">
@@ -323,12 +364,12 @@ export default function ProjectsPage() {
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               I&apos;m always open to discussing new projects, innovative ideas, and opportunities to create impactful electrical engineering solutions.
             </p>
-            <Link
+            <AnimatedButton
               href="/contact"
-              className="button"
+              size="lg"
             >
               Get in Touch
-            </Link>
+            </AnimatedButton>
           </div>
         </section>
       </div>

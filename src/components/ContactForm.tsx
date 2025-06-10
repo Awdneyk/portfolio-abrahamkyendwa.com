@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import AnimatedButton from "./AnimatedButton";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -46,73 +48,193 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {error && (
-        <div className="p-4 bg-red-900/50 border border-red-500 text-red-200 rounded-md">
-          {error}
-        </div>
-      )}
+    <motion.form 
+      onSubmit={handleSubmit} 
+      className="space-y-6"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <AnimatePresence mode="wait">
+        {error && (
+          <motion.div 
+            className="p-4 bg-red-900/50 border border-red-500 text-red-200 rounded-md"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {error}
+          </motion.div>
+        )}
+        
+        {isSubmitted && (
+          <motion.div 
+            className="p-4 bg-green-900/50 border border-green-500 text-green-200 rounded-md"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            Your message has been sent successfully! I&apos;ll get back to you soon.
+          </motion.div>
+        )}
+      </AnimatePresence>
       
-      {isSubmitted && (
-        <div className="p-4 bg-green-900/50 border border-green-500 text-green-200 rounded-md">
-          Your message has been sent successfully! I&apos;ll get back to you soon.
-        </div>
-      )}
-      
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
-          Name
-        </label>
-        <input
-          id="name"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="bg-gray-800 w-full"
-          placeholder="Your name"
-          disabled={isSubmitting}
-          required
-        />
-      </div>
-      
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="bg-gray-800 w-full"
-          placeholder="Your email address"
-          disabled={isSubmitting}
-          required
-        />
-      </div>
-      
-      <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
-          Message
-        </label>
-        <textarea
-          id="message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="bg-gray-800 w-full min-h-[150px]"
-          placeholder="Your message"
-          disabled={isSubmitting}
-          required
-        />
-      </div>
-      
-      <button
-        type="submit"
-        className={`button w-full ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+      <AnimatedInput
+        id="name"
+        label="Name"
+        type="text"
+        value={name}
+        onChange={setName}
+        placeholder="Your name"
         disabled={isSubmitting}
+        required
+      />
+      
+      <AnimatedInput
+        id="email"
+        label="Email"
+        type="email"
+        value={email}
+        onChange={setEmail}
+        placeholder="Your email address"
+        disabled={isSubmitting}
+        required
+      />
+      
+      <AnimatedInput
+        id="message"
+        label="Message"
+        type="textarea"
+        value={message}
+        onChange={setMessage}
+        placeholder="Your message"
+        disabled={isSubmitting}
+        required
+        rows={6}
+      />
+      
+      <AnimatedButton
+        type="submit"
+        className="w-full"
+        disabled={isSubmitting}
+        loading={isSubmitting}
       >
-        {isSubmitting ? 'Sending...' : 'Send'}
-      </button>
-    </form>
+        Send Message
+      </AnimatedButton>
+    </motion.form>
+  );
+}
+
+interface AnimatedInputProps {
+  id: string;
+  label: string;
+  type: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  disabled?: boolean;
+  required?: boolean;
+  rows?: number;
+}
+
+function AnimatedInput({
+  id,
+  label,
+  type,
+  value,
+  onChange,
+  placeholder,
+  disabled = false,
+  required = false,
+  rows = 4
+}: AnimatedInputProps) {
+  const [isFocused, setIsFocused] = useState(false);
+  const [hasValue, setHasValue] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    onChange(newValue);
+    setHasValue(newValue.length > 0);
+  };
+
+  const inputClasses = `
+    w-full px-4 py-3 bg-gray-800/50 border-2 border-gray-700 rounded-lg
+    text-white placeholder-transparent transition-all duration-200
+    focus:outline-none focus:border-blue-500 focus:bg-gray-800
+    disabled:opacity-50 disabled:cursor-not-allowed
+    ${isFocused || hasValue ? 'pt-6 pb-2' : ''}
+  `;
+
+  const labelClasses = `
+    absolute left-4 transition-all duration-200 pointer-events-none
+    ${isFocused || hasValue || value 
+      ? 'top-2 text-xs text-blue-400' 
+      : 'top-3 text-base text-gray-400'
+    }
+  `;
+
+  return (
+    <motion.div 
+      className="relative"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <motion.label
+        htmlFor={id}
+        className={labelClasses}
+        layout
+        transition={{ duration: 0.2 }}
+      >
+        {label}
+      </motion.label>
+      
+      {type === "textarea" ? (
+        <motion.textarea
+          id={id}
+          value={value}
+          onChange={handleChange}
+          className={`${inputClasses} min-h-[120px] resize-y`}
+          placeholder={placeholder}
+          disabled={disabled}
+          required={required}
+          rows={rows}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          whileFocus={{ 
+            scale: 1.02,
+            transition: { duration: 0.2 }
+          }}
+        />
+      ) : (
+        <motion.input
+          id={id}
+          type={type}
+          value={value}
+          onChange={handleChange}
+          className={inputClasses}
+          placeholder={placeholder}
+          disabled={disabled}
+          required={required}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          whileFocus={{ 
+            scale: 1.02,
+            transition: { duration: 0.2 }
+          }}
+        />
+      )}
+      
+      {/* Focus indicator */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: isFocused ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+        style={{ originX: 0.5 }}
+      />
+    </motion.div>
   );
 }

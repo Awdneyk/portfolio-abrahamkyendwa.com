@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { navContainer, navItem, prefersReducedMotion } from "@/utils/animations";
+import MorphingHamburger from "./MorphingHamburger";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -78,110 +80,137 @@ export default function Navbar() {
           </div>
           
           {/* Desktop navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
+          <motion.nav 
+            className="hidden md:flex space-x-8"
+            variants={navContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.name}
-                href={item.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  pathname === item.path 
-                    ? "text-white border-b-2 border-blue-400" 
-                    : "text-gray-300 hover:text-white"
-                }`}
+                variants={navItem}
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.2 }}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.path}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors relative ${
+                    pathname === item.path 
+                      ? "text-white" 
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {item.name}
+                  {pathname === item.path && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400"
+                      layoutId="navbar-indicator"
+                      transition={{ duration: 0.3 }}
+                    />
+                  )}
+                </Link>
+              </motion.div>
             ))}
-          </nav>
+          </motion.nav>
           
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button
-              type="button"
-              className="text-gray-300 hover:text-white p-2 rounded-md focus:outline-none"
+            <MorphingHamburger
+              isOpen={isMenuOpen}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {isMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+              className="text-gray-300 hover:text-white p-2 rounded-md"
+            />
           </div>
         </div>
       </div>
       
       {/* Mobile sidebar */}
-      <div 
-        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-300 ${
-          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="absolute inset-0 bg-black opacity-70"></div>
-        
-        <div 
-          className={`fixed inset-y-0 left-0 w-64 bg-gray-900 shadow-xl transform transition-transform duration-300 ease-in-out mobile-menu-container ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-800">
-            <span className="font-semibold text-white">Menu</span>
-            <button
-              type="button"
-              className="text-gray-400 hover:text-white"
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div 
+            className="fixed inset-0 z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.div 
+              className="absolute inset-0 bg-black"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.7 }}
+              exit={{ opacity: 0 }}
               onClick={() => setIsMenuOpen(false)}
+            />
+            
+            <motion.div 
+              className="fixed inset-y-0 left-0 w-64 bg-gray-900 shadow-xl mobile-menu-container"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+              <div className="flex items-center justify-between h-16 px-6 border-b border-gray-800">
+                <motion.span 
+                  className="font-semibold text-white"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  Menu
+                </motion.span>
+                <motion.button
+                  type="button"
+                  className="text-gray-400 hover:text-white p-2 rounded-md"
+                  onClick={() => setIsMenuOpen(false)}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+              
+              <motion.nav 
+                className="px-3 py-4 space-y-1"
+                variants={navContainer}
+                initial="hidden"
+                animate="visible"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          
-          <nav className="px-3 py-4 space-y-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`flex items-center px-4 py-3 rounded-md text-base font-medium transition-colors ${
-                  pathname === item.path
-                    ? "text-white bg-gray-800"
-                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </div>
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    variants={navItem}
+                    custom={index}
+                  >
+                    <Link
+                      href={item.path}
+                      className={`flex items-center px-4 py-3 rounded-md text-base font-medium transition-colors ${
+                        pathname === item.path
+                          ? "text-white bg-gray-800"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.nav>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

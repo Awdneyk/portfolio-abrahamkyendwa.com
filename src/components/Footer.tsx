@@ -1,10 +1,15 @@
 //import Link from "next/link";
+import TechStackBelt from "./TechStackBelt";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-8 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
+    <footer className="bg-black text-white border-t border-gray-800">
+      {/* Tech Stack Belt */}
+      <TechStackBelt className="bg-black" />
+      
+      <div className="py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-sm text-gray-400">
               © {new Date().getFullYear()} Abraham Kyendwa. All rights reserved.
@@ -50,6 +55,7 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+        </div>
         </div>
       </div>
     </footer>

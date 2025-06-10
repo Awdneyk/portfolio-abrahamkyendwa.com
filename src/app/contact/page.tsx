@@ -1,34 +1,54 @@
 "use client";
+import { motion } from "framer-motion";
 import ContactForm from "@/components/ContactForm";
 import PageTransition from "@/components/PageTransition";
+import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedButton from "@/components/AnimatedButton";
+import { staggerContainer, staggerItem } from "@/utils/animations";
 
 export default function ContactPage() {
   return (
     <PageTransition>
       <div className="min-h-screen">
         {/* Header */}
-        <section className="py-20 bg-gray-900">
+        <AnimatedSection className="py-20 bg-gray-900" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <motion.h1 
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
               Get in touch.
-            </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            </motion.h1>
+            <motion.p 
+              className="text-xl text-gray-300 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Have a project in mind or want to discuss potential opportunities? 
               I&apos;d love to hear from you.
-            </p>
+            </motion.p>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Contact Form Section */}
-        <section className="py-16">
+        <AnimatedSection className="py-16" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
+            <motion.div 
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <motion.div variants={staggerItem}>
                 <h2 className="text-2xl font-bold mb-6">Send me a message</h2>
                 <ContactForm />
-              </div>
+              </motion.div>
               
-              <div>
+              <motion.div variants={staggerItem}>
                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start">
@@ -93,28 +113,40 @@ export default function ContactPage() {
                     My response time is typically within 24-48 hours.
                   </p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Connect on LinkedIn CTA */}
-        <section className="py-16 bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between">
-            <div className="mb-6 sm:mb-0 text-center sm:text-left">
-              <h2 className="text-2xl font-bold">Let&apos;s connect on LinkedIn</h2>
-              <p className="text-gray-300 mt-2">Stay updated with my latest projects and insights</p>
-            </div>
-            <a
-              href="https://linkedin.com/in/johnsmith"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button"
+        <AnimatedSection className="py-16 bg-gray-900" variant="fadeInUp">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div 
+              className="flex flex-col sm:flex-row items-center justify-between"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
             >
-              Connect on LinkedIn
-            </a>
+              <motion.div 
+                className="mb-6 sm:mb-0 text-center sm:text-left"
+                variants={staggerItem}
+              >
+                <h2 className="text-2xl font-bold">Let&apos;s connect on LinkedIn</h2>
+                <p className="text-gray-300 mt-2">Stay updated with my latest projects and insights</p>
+              </motion.div>
+              <motion.div variants={staggerItem}>
+                <AnimatedButton
+                  href="https://linkedin.com/in/johnsmith"
+                  variant="primary"
+                  size="lg"
+                >
+                  Connect on LinkedIn
+                </AnimatedButton>
+              </motion.div>
+            </motion.div>
           </div>
-        </section>
+        </AnimatedSection>
       </div>
     </PageTransition>
   );
