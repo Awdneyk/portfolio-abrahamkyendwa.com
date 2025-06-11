@@ -96,12 +96,12 @@ export default function ContactPage() {
                         <h3 className="text-lg font-medium text-white">Social Media</h3>
                         <div className="mt-1 space-y-2">
                           <p className="text-white/80">
-                            <a href="https://linkedin.com/in/johnsmith" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                            <a href="https://linkedin.com/in/abrahamkyendwa" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
                               LinkedIn
                             </a>
                           </p>
                           <p className="text-white/80">
-                            <a href="https://github.com/johnsmith" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                            <a href="https://github.com/awdneyk" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
                               GitHub
                             </a>
                           </p>
@@ -156,7 +156,7 @@ export default function ContactPage() {
               </motion.div>
               <motion.div variants={staggerItem}>
                 <AnimatedButton
-                  href="https://linkedin.com/in/johnsmith"
+                  href="https://linkedin.com/in/abrahamkyendwa"
                   variant="primary"
                   size="lg"
                 >
