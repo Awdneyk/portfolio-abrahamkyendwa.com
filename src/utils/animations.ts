@@ -145,9 +145,10 @@ export const pageTransition: Variants = {
 export const reduceMotion = (variants: Variants): Variants => {
   const reduced: Variants = {};
   Object.keys(variants).forEach(key => {
-    if (typeof variants[key] === 'object' && variants[key] !== null) {
+    const variant = variants[key];
+    if (typeof variant === 'object' && variant !== null) {
       reduced[key] = {
-        ...variants[key] as any,
+        ...(variant as Record<string, unknown>),
         transition: { duration: 0.01 }
       };
     }

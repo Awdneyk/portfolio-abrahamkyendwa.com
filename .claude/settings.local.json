@@ -9,7 +9,8 @@
       "Bash(npm run type-check:*)",
       "Bash(npx next lint:*)",
       "Bash(timeout 20s npm run lint:*)",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": []
   }
