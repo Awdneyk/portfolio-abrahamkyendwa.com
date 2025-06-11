@@ -39,9 +39,8 @@ export default function ContactForm() {
       
       // Hide success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
-    } catch (err) {
+    } catch {
       setError("Failed to send message. Please try again later.");
-      console.error(err);
     } finally {
       setIsSubmitting(false);
     }
@@ -203,10 +202,6 @@ function AnimatedInput({
           rows={rows}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          whileFocus={{ 
-            scale: 1.02,
-            transition: { duration: 0.2 }
-          }}
         />
       ) : (
         <motion.input
@@ -220,10 +215,6 @@ function AnimatedInput({
           required={required}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          whileFocus={{ 
-            scale: 1.02,
-            transition: { duration: 0.2 }
-          }}
         />
       )}
       

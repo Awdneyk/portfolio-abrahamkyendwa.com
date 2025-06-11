@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #111827;
   --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-poppins);
 }
 
 body {
@@ -49,6 +49,7 @@ h1, h2, h3, h4, h5, h6 {
   @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8;
 }
 
+/* Legacy card class - replaced with LiquidGlassCard component */
 .card {
   @apply bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300;
 }
@@ -64,4 +65,24 @@ input, textarea {
 .font-murs {
   font-family: var(--font-murs);
   letter-spacing: 0.02em;
+}
+
+/* Liquid glass technology belt with smooth pause/resume functionality */
+@keyframes tech-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.33%);
+  }
+}
+
+.tech-scroll-container {
+  animation: tech-scroll 60s linear infinite;
+  animation-fill-mode: forwards;
+  will-change: transform;
+}
+
+.tech-scroll-container:hover {
+  animation-play-state: paused;
 }

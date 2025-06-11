@@ -10,7 +10,7 @@ interface ParallaxSectionProps {
 
 export default function ParallaxSection({ 
   children, 
-  offset = 50,
+  offset = 30,
   className = ""
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -20,12 +20,11 @@ export default function ParallaxSection({
   });
 
   const y = useTransform(scrollYProgress, [0, 1], [-offset, offset]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
 
   return (
     <div ref={ref} className={`relative ${className}`}>
       <motion.div
-        style={{ y, opacity }}
+        style={{ y, willChange: 'transform' }}
         className="w-full h-full"
       >
         {children}
@@ -37,7 +36,7 @@ export default function ParallaxSection({
 // Background parallax component
 export function ParallaxBackground({ 
   children, 
-  speed = 0.5,
+  speed = 0.3,
   className = ""
 }: {
   children: ReactNode;
@@ -45,11 +44,11 @@ export function ParallaxBackground({
   className?: string;
 }) {
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 1000 * speed]);
+  const y = useTransform(scrollY, [0, 800], [0, 800 * speed]);
 
   return (
     <motion.div
-      style={{ y }}
+      style={{ y, willChange: 'transform' }}
       className={`absolute inset-0 ${className}`}
     >
       {children}

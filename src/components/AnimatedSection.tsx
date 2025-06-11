@@ -2,7 +2,7 @@
 import { ReactNode } from "react";
 import { motion, Variants, useInView } from "framer-motion";
 import { useRef } from "react";
-import { fadeInUp, prefersReducedMotion, reduceMotion } from "@/utils/animations";
+import { prefersReducedMotion, reduceMotion } from "@/utils/animations";
 
 type AnimationVariant = "fadeInUp" | "fadeInDown" | "fadeInLeft" | "fadeInRight" | "scaleIn" | "slideUp";
 

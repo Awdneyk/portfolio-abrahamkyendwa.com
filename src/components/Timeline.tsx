@@ -91,7 +91,7 @@ export default function Timeline() {
             className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500"
             initial={{ scaleY: 0 }}
             animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-            transition={{ duration: 2, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
             style={{ originY: 0 }}
           />
 
@@ -108,10 +108,11 @@ export default function Timeline() {
                   initial={{ scale: 0 }}
                   animate={isInView ? { scale: 1 } : { scale: 0 }}
                   transition={{ 
-                    duration: 0.5, 
-                    delay: 0.5 + index * 0.2,
+                    duration: 0.4, 
+                    delay: 0.3 + index * 0.15,
                     type: "spring",
-                    stiffness: 200
+                    stiffness: 100,
+                    damping: 15
                   }}
                 >
                   <span className="text-2xl">{event.icon}</span>
@@ -123,13 +124,13 @@ export default function Timeline() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                   transition={{ 
-                    duration: 0.6, 
-                    delay: 0.7 + index * 0.2,
+                    duration: 0.4, 
+                    delay: 0.4 + index * 0.1,
                     ease: "easeOut"
                   }}
                   whileHover={{
-                    scale: 1.02,
-                    transition: { duration: 0.2 }
+                    y: -4,
+                    transition: { duration: 0.15 }
                   }}
                 >
                   <div className="flex items-center gap-3 mb-3">

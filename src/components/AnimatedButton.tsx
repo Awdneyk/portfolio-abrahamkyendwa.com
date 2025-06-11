@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { buttonHover, buttonTap } from "@/utils/animations";
 
 interface AnimatedButtonProps {
   children: ReactNode;
@@ -14,13 +13,14 @@ interface AnimatedButtonProps {
   loading?: boolean;
   icon?: ReactNode;
   iconPosition?: "left" | "right";
+  type?: "button" | "submit" | "reset";
 }
 
 const variants = {
-  primary: "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700",
-  secondary: "bg-gray-700 text-white hover:bg-gray-600",
-  outline: "border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white",
-  ghost: "text-gray-300 hover:text-white hover:bg-gray-800"
+  primary: "bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/15 hover:border-white/30 shadow-[0_4px_16px_rgba(255,255,255,0.08)] hover:shadow-[0_6px_20px_rgba(255,255,255,0.12)]",
+  secondary: "bg-white/5 backdrop-blur-xl border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20 shadow-[0_2px_12px_rgba(255,255,255,0.06)] hover:shadow-[0_4px_16px_rgba(255,255,255,0.1)]",
+  outline: "bg-transparent backdrop-blur-xl border border-white/30 text-white/90 hover:bg-white/10 hover:border-white/40 shadow-[0_2px_12px_rgba(255,255,255,0.06)] hover:shadow-[0_4px_16px_rgba(255,255,255,0.1)]",
+  ghost: "bg-white/5 backdrop-blur-xl text-white/80 hover:bg-white/10 hover:text-white"
 };
 
 const sizes = {
@@ -39,12 +39,13 @@ export default function AnimatedButton({
   disabled = false,
   loading = false,
   icon,
-  iconPosition = "left"
+  iconPosition = "left",
+  type = "button"
 }: AnimatedButtonProps) {
   const baseClasses = `
-    relative inline-flex items-center justify-center gap-2 
-    font-medium rounded-lg transition-all duration-200
-    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900
+    relative inline-flex items-center justify-center gap-2 overflow-hidden
+    font-medium rounded-2xl transition-all duration-200
+    focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-transparent
     disabled:opacity-50 disabled:cursor-not-allowed
     ${variants[variant]} ${sizes[size]} ${className}
   `;
@@ -98,11 +99,14 @@ export default function AnimatedButton({
         </motion.span>
       )}
       
+      {/* Glass overlay effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent pointer-events-none rounded-2xl" />
+      
       {/* Ripple effect */}
       <motion.div
-        className="absolute inset-0 rounded-lg"
+        className="absolute inset-0 rounded-2xl"
         whileTap={{
-          background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)"
+          background: "radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)"
         }}
         transition={{ duration: 0.3 }}
       />
@@ -110,9 +114,9 @@ export default function AnimatedButton({
   );
 
   const motionProps = {
-    whileHover: disabled || loading ? {} : buttonHover,
-    whileTap: disabled || loading ? {} : buttonTap,
-    transition: { duration: 0.2 }
+    whileHover: disabled || loading ? {} : { y: -2, scale: 1.02 },
+    whileTap: disabled || loading ? {} : { y: 0, scale: 0.98 },
+    transition: { duration: 0.15 }
   };
 
   if (href && !disabled) {
@@ -129,7 +133,7 @@ export default function AnimatedButton({
 
   return (
     <motion.button
-      type="button"
+      type={type}
       className={baseClasses}
       onClick={onClick}
       disabled={disabled || loading}

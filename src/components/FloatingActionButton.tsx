@@ -15,16 +15,24 @@ export default function FloatingActionButton({
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    
     const toggleVisibility = () => {
-      if (window.pageYOffset > showAfterScroll) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-        setIsExpanded(false);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.pageYOffset > showAfterScroll) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+            setIsExpanded(false);
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, [showAfterScroll]);
 
@@ -44,8 +52,8 @@ export default function FloatingActionButton({
       ),
       label: "Download CV",
       action: () => {
-        // Add download logic here
-        console.log("Download CV");
+        // TODO: Add download logic here
+        window.open("/cv.pdf", "_blank");
       }
     },
     {
@@ -102,15 +110,15 @@ export default function FloatingActionButton({
 
             {/* Main FAB */}
             <motion.div className="relative">
-              {/* Pulse ring */}
+              {/* Pulse ring - reduced frequency */}
               <motion.div
-                className="absolute inset-0 rounded-full bg-blue-500/30"
+                className="absolute inset-0 rounded-full bg-blue-500/20"
                 animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 0, 0.7]
+                  scale: [1, 1.15, 1],
+                  opacity: [0.5, 0, 0.5]
                 }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}

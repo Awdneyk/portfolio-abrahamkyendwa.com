@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npx eslint:*)",
+      "Bash(rm:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(npx next lint:*)",
+      "Bash(timeout 20s npm run lint:*)",
+      "Bash(cp:*)"
+    ],
+    "deny": []
+  }
+}

@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-//import Image from "next/image";
 import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import PageTransition from "@/components/PageTransition";
 import AnimatedSection from "@/components/AnimatedSection";
 import AnimatedButton from "@/components/AnimatedButton";
+import LiquidGlassCard from "@/components/LiquidGlassCard";
 import { staggerContainer, staggerItem } from "@/utils/animations";
 
 // This could be fetched from a database or API in a real application
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
     <PageTransition>
       <div className="min-h-screen">
         {/* Header */}
-        <AnimatedSection className="py-20 bg-gray-900" variant="fadeInUp">
+        <AnimatedSection className="py-20 bg-gradient-to-br from-gray-900 via-purple-900/40 to-gray-900" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.h1 
               className="text-4xl md:text-5xl font-bold mb-6"
@@ -111,7 +111,7 @@ export default function ProjectsPage() {
         </AnimatedSection>
 
         {/* Project Methodology */}
-        <AnimatedSection className="py-16" variant="fadeInUp">
+        <AnimatedSection className="py-16 bg-gradient-to-br from-gray-900 via-blue-900/40 to-gray-900" variant="fadeInUp">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               className="text-center mb-16"
@@ -136,37 +136,43 @@ export default function ProjectsPage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.div className="card p-8" variants={staggerItem}>
-                <h3 className="text-xl font-bold mb-4">Problem Definition</h3>
-                <p className="text-gray-300">
-                  Every project begins with clearly understanding the problem we&apos;re 
-                  solving and for whom. This clarity guides all subsequent decisions.
-                </p>
+              <motion.div variants={staggerItem}>
+                <LiquidGlassCard padding="lg" glowIntensity="medium">
+                  <h3 className="text-xl font-bold mb-4 text-white">Problem Definition</h3>
+                  <p className="text-white/80">
+                    Every project begins with clearly understanding the problem we&apos;re 
+                    solving and for whom. This clarity guides all subsequent decisions.
+                  </p>
+                </LiquidGlassCard>
               </motion.div>
 
-              <motion.div className="card p-8" variants={staggerItem}>
-                <h3 className="text-xl font-bold mb-4">Systems Approach</h3>
-                <p className="text-gray-300">
-                  I consider how each component interacts within the larger system, 
-                  ensuring holistic solutions that address current needs while 
-                  allowing for future expansion.
-                </p>
+              <motion.div variants={staggerItem}>
+                <LiquidGlassCard padding="lg" glowIntensity="medium">
+                  <h3 className="text-xl font-bold mb-4 text-white">Systems Approach</h3>
+                  <p className="text-white/80">
+                    I consider how each component interacts within the larger system, 
+                    ensuring holistic solutions that address current needs while 
+                    allowing for future expansion.
+                  </p>
+                </LiquidGlassCard>
               </motion.div>
 
-              <motion.div className="card p-8" variants={staggerItem}>
-                <h3 className="text-xl font-bold mb-4">Iterative Refinement</h3>
-                <p className="text-gray-300">
-                  Through prototyping, testing, and refinement, I continuously 
-                  improve designs to ensure optimal performance, efficiency, and 
-                  user satisfaction.
-                </p>
+              <motion.div variants={staggerItem}>
+                <LiquidGlassCard padding="lg" glowIntensity="medium">
+                  <h3 className="text-xl font-bold mb-4 text-white">Iterative Refinement</h3>
+                  <p className="text-white/80">
+                    Through prototyping, testing, and refinement, I continuously 
+                    improve designs to ensure optimal performance, efficiency, and 
+                    user satisfaction.
+                  </p>
+                </LiquidGlassCard>
               </motion.div>
             </motion.div>
           </div>
         </AnimatedSection>
 
         {/* Detailed Featured Project */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-12">Featured Project</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -259,7 +265,7 @@ export default function ProjectsPage() {
         </AnimatedSection>
 
         {/* Engineering Approach */}
-        <section className="py-16 bg-gray-900">
+        <section className="py-16 bg-gradient-to-br from-gray-900 via-violet-900/40 to-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-6">Engineering Approach</h2>
@@ -269,25 +275,25 @@ export default function ProjectsPage() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="card p-8">
-                <h3 className="text-xl font-bold mb-4">First Principles Thinking</h3>
-                <p className="text-gray-300 mb-4">
+              <LiquidGlassCard padding="lg" glowIntensity="medium">
+                <h3 className="text-xl font-bold mb-4 text-white">First Principles Thinking</h3>
+                <p className="text-white/80 mb-4">
                   I approach complex problems by breaking them down to their fundamental truths and then building solutions from the ground up. This methodology helps me create innovative solutions that aren&apos;t constrained by conventional thinking.
                 </p>
-                <p className="text-gray-300">
+                <p className="text-white/80">
                   By questioning assumptions and focusing on what is physically possible, I&apos;ve been able to bypass traditional constraints and develop more efficient electrical systems.
                 </p>
-              </div>
+              </LiquidGlassCard>
               
-              <div className="card p-8">
-                <h3 className="text-xl font-bold mb-4">Sustainable Engineering</h3>
-                <p className="text-gray-300 mb-4">
+              <LiquidGlassCard padding="lg" glowIntensity="medium">
+                <h3 className="text-xl font-bold mb-4 text-white">Sustainable Engineering</h3>
+                <p className="text-white/80 mb-4">
                   I firmly believe that electrical engineering has a crucial role to play in creating a more sustainable future. Energy efficiency and reduced environmental impact are core considerations in all my projects.
                 </p>
-                <p className="text-gray-300">
+                <p className="text-white/80">
                   From material selection to energy optimization, I integrate sustainability principles throughout the design and implementation process, creating solutions that are both technically excellent and environmentally responsible.
                 </p>
-              </div>
+              </LiquidGlassCard>
             </div>
           </div>
         </section>
@@ -358,7 +364,7 @@ export default function ProjectsPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 bg-gray-900">
+        <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold mb-6">Interested in working together?</h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">

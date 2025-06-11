@@ -1,6 +1,6 @@
 import Image from "next/image";
-//import Link from "next/link";
 import { motion } from "framer-motion";
+import LiquidGlassCard from "./LiquidGlassCard";
 
 type ProjectCardProps = {
   id: string;
@@ -13,48 +13,47 @@ type ProjectCardProps = {
 export default function ProjectCard({ id, title, description, image, tags }: ProjectCardProps) {
   return (
     <motion.div 
-      id={id} 
-      className="card overflow-hidden"
+      id={id}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5 }}
-      whileHover={{ 
-        y: -5, 
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" 
-      }}
     >
-      <div className="aspect-video relative bg-gray-800">
-        {image ? (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-            <span>Project Image</span>
-          </div>
-        )}
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag) => (
-            <span 
-              key={tag} 
-              className="px-2 py-1 text-xs font-medium bg-blue-900/30 text-blue-300 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
+      <LiquidGlassCard className="overflow-hidden" padding="lg" glowIntensity="medium">
+        <div className="aspect-video relative bg-gray-800/30 rounded-xl overflow-hidden mb-6">
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+              <span>Project Image</span>
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
-        <p className="text-gray-300 mb-4">{description}</p>
-        <button className="text-blue-400 hover:text-blue-300 font-medium">
-          View Case Study →
-        </button>
-      </div>
+        <div>
+          <h3 className="text-xl font-bold mb-3 text-white">{title}</h3>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {tags.map((tag) => (
+              <span 
+                key={tag} 
+                className="px-3 py-1 text-xs font-medium bg-white/20 text-white/90 rounded-full backdrop-blur-sm border border-white/20"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <p className="text-white/80 mb-4 leading-relaxed">{description}</p>
+          <button className="text-white/90 hover:text-white font-medium transition-colors duration-200 flex items-center gap-2">
+            View Case Study
+            <span className="transform transition-transform group-hover:translate-x-1">→</span>
+          </button>
+        </div>
+      </LiquidGlassCard>
     </motion.div>
   );
 }
