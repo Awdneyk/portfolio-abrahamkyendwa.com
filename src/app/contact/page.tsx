@@ -101,7 +101,7 @@ export default function ContactPage() {
                             </a>
                           </p>
                           <p className="text-white/80">
-                            <a href="https://github.com/awdneyk" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
+                            <a href="https://github.com/Awdneyk" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
                               GitHub
                             </a>
                           </p>

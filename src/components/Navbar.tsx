@@ -97,12 +97,12 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
           >
             <div 
-              className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/40 backdrop-blur-md"
               onClick={() => setIsMenuOpen(false)}
             />
             
             <motion.div 
-              className="fixed top-20 right-6 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 min-w-[200px] shadow-[0_8px_32px_rgba(255,255,255,0.1)]"
+              className="fixed top-20 left-1/2 transform -translate-x-1/2 bg-white/20 backdrop-blur-2xl border border-white/40 rounded-2xl p-6 w-[90%] max-w-sm md:max-w-md lg:max-w-lg shadow-[0_8px_32px_rgba(255,255,255,0.25)]"
               initial={{ opacity: 0, scale: 0.95, y: -10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -10 }}

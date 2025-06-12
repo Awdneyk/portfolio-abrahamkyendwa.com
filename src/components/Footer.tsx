@@ -14,7 +14,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Abraham Kyendwa. All rights reserved.
             </p>
           </div>
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 mr-16">
             <a
               href="https://github.com/Awdneyk"
               target="_blank"
@@ -36,7 +36,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/johnsmith"
+              href="https://linkedin.com/in/abrahamkyendwa"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white transition-colors"

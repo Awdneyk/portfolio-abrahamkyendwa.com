@@ -8,80 +8,56 @@ import AnimatedButton from "@/components/AnimatedButton";
 import LiquidGlassCard from "@/components/LiquidGlassCard";
 import { staggerContainer, staggerItem } from "@/utils/animations";
 
-// This could be fetched from a database or API in a real application
+// Real projects by Abraham Kyendwa
 const projects = [
   {
-    id: "smart-grid",
-    title: "Smart Power Grid Optimization",
+    id: "ticketbooth-app",
+    title: "TicketBooth Application",
     description:
-      "Developed an intelligent system that uses machine learning algorithms to predict and optimize power distribution across the grid, resulting in a 15% reduction in energy losses and improved reliability during peak usage times.",
-    image: "/projects/smart-grid.jpg",
-    tags: ["Power Systems", "Machine Learning", "Energy Efficiency"],
-    challenge: "Existing power grid infrastructure faced significant energy losses during peak usage periods and lacked dynamic response capabilities to handle fluctuating demand patterns.",
-    solution: "Implemented a machine learning system that analyzes historical usage data, weather patterns, and real-time grid metrics to dynamically adjust distribution parameters and optimize power flow.",
-    outcome: "Achieved 15% reduction in energy losses, improved grid stability by 22%, and reduced maintenance costs by implementing predictive maintenance based on real-time monitoring.",
-    technologies: ["TensorFlow", "MATLAB", "Power System Simulator", "IoT Sensors"]
+      "Currently developing a comprehensive seat mapping and ticketing application with real-time booking capabilities, intuitive user interface design, and seamless payment integration.",
+    image: "/projects/ticketbooth.jpg",
+    tags: ["Full-Stack Development", "Real-time Systems", "UI/UX Design"],
+    challenge: "Event organizers needed a modern, intuitive ticketing system that could handle complex venue layouts, real-time seat availability, and provide a smooth user experience for both organizers and customers.",
+    solution: "Building a full-stack application with interactive seat mapping, real-time availability updates, secure payment processing, and an admin dashboard for event management.",
+    outcome: "Currently in development - aiming to create a user-friendly platform that simplifies event ticketing while providing powerful management tools for organizers.",
+    technologies: ["React", "Node.js", "Socket.io", "PostgreSQL", "Stripe API"]
   },
   {
-    id: "renewable-energy",
-    title: "Renewable Energy Integration",
+    id: "stem-player-device",
+    title: "Stem Player Inspired Device",
     description:
-      "Created a hybrid controller system that seamlessly integrates solar and wind energy sources into existing power networks, with intelligent load balancing and storage management capabilities.",
-    image: "/projects/renewable-energy.jpg",
-    tags: ["Renewable Energy", "Control Systems", "Power Electronics"],
-    challenge: "Intermittent nature of renewable energy sources created stability issues when attempting to integrate them into traditional power networks at scale.",
-    solution: "Designed a hybrid controller that manages the transition between renewable and traditional energy sources, integrating battery storage systems to buffer supply fluctuations and implementing load prediction algorithms.",
-    outcome: "Enabled 40% renewable energy penetration in a previously fossil-fuel dependent industrial facility while maintaining operational stability and reducing carbon emissions by 12,000 tons annually.",
-    technologies: ["Power Electronics", "SCADA Systems", "Battery Management Systems", "Microcontrollers"]
+      "Currently working on a hardware music device inspired by Kanye West's Stem Player, focusing on audio processing, user interaction design, and innovative music manipulation capabilities.",
+    image: "/projects/stem-player.jpg",
+    tags: ["Hardware Design", "Audio Processing", "Embedded Systems"],
+    challenge: "Creating an affordable, user-friendly music manipulation device that allows real-time audio stem separation and creative mixing capabilities for both casual users and music enthusiasts.",
+    solution: "Designing custom hardware with embedded audio processing, tactile controls, and wireless connectivity to enable intuitive music manipulation and creative expression.",
+    outcome: "Currently in development - prototyping phase focusing on audio quality, user interface design, and manufacturing feasibility.",
+    technologies: ["Embedded C++", "Audio DSP", "PCB Design", "Bluetooth", "Touch Sensors"]
   },
   {
-    id: "industrial-automation",
-    title: "Industrial Automation Suite",
+    id: "silverbullet-algorithm",
+    title: "Silverbullet Algorithm",
     description:
-      "Designed and implemented a comprehensive automation solution for manufacturing facilities, including custom PCB design, PLC programming, and SCADA system integration.",
-    image: "/projects/industrial-automation.jpg",
-    tags: ["Automation", "PCB Design", "PLC", "Industrial IoT"],
-    challenge: "Manufacturing client was experiencing significant production inefficiencies and quality control issues due to outdated manual processes and disconnected control systems.",
-    solution: "Created a unified automation system with custom-designed sensor arrays, central PLC control architecture, and a comprehensive SCADA interface that provides real-time monitoring and control capabilities.",
-    outcome: "Increased production throughput by 35%, reduced defect rates by 27%, and improved worker safety metrics through automated hazard detection and emergency response systems.",
-    technologies: ["Siemens S7 PLC", "Altium Designer", "Industrial IoT Gateways", "HMI Interfaces"]
+      "Developed a sophisticated trading strategy that exploits algorithmic price movements during high-liquidity time windows by entering on retracements in the direction of the dominant trend.",
+    image: "/projects/trading-algorithm.jpg",
+    tags: ["Algorithmic Trading", "Machine Learning", "Financial Technology"],
+    challenge: "Developing a reliable trading algorithm that could identify and capitalize on predictable market patterns while managing risk in volatile trading conditions.",
+    solution: "Created an algorithm that analyzes market liquidity, identifies Fair Value Gaps (FVGs), and executes trades based on trend direction and retracement patterns with built-in risk management.",
+    outcome: "Successfully backtested strategy showing consistent performance in high-liquidity market conditions with improved risk-adjusted returns.",
+    technologies: ["Python", "pandas", "NumPy", "TradingView Pine Script", "MetaTrader API"]
   },
   {
-    id: "smart-home",
-    title: "Smart Home Energy Management",
+    id: "ml-pattern-analysis",
+    title: "ML Pattern Analysis Tool",
     description:
-      "Developed a residential energy management system that optimizes electricity usage based on real-time pricing, weather forecasts, and user preferences, reducing energy bills by up to 25%.",
-    image: "/projects/smart-home.jpg",
-    tags: ["Smart Home", "Energy Management", "IoT", "Embedded Systems"],
-    challenge: "Homeowners faced increasing energy costs with no clear visibility into consumption patterns or effective tools to optimize usage without sacrificing comfort.",
-    solution: "Created an integrated system that combines smart metering, appliance control, and an AI-powered optimization engine that learns user preferences and automatically adjusts energy usage patterns.",
-    outcome: "Average energy bill reduction of 25% across pilot homes, with 92% user satisfaction rate and seamless integration with existing smart home platforms.",
-    technologies: ["ESP32 Microcontrollers", "Z-Wave", "React Native", "Cloud Computing"]
-  },
-  {
-    id: "microgrid",
-    title: "Campus Microgrid Project",
-    description:
-      "Led the electrical design for a university campus microgrid project, incorporating renewable energy sources, battery storage systems, and intelligent load management to create a resilient and sustainable power infrastructure.",
-    image: "/projects/microgrid.jpg",
-    tags: ["Microgrids", "Sustainable Energy", "Power Distribution"],
-    challenge: "University campus experienced multiple power outages annually due to grid vulnerabilities, while also seeking to reduce energy costs and environmental impact.",
-    solution: "Designed and implemented a comprehensive microgrid solution with 2MW solar capacity, 3MWh battery storage, and advanced control systems capable of islanding operation during grid outages.",
-    outcome: "Reduced campus energy costs by 31%, eliminated power outage disruptions, and created a living laboratory for engineering students to study advanced energy systems.",
-    technologies: ["Grid-Tie Inverters", "Battery Storage", "ETAP Modeling", "Protection Systems"]
-  },
-  {
-    id: "ev-charging",
-    title: "Electric Vehicle Charging Network",
-    description:
-      "Designed a scalable electric vehicle charging network with load balancing capabilities to prevent grid overloading during peak charging times while maximizing charging efficiency.",
-    image: "/projects/ev-charging.jpg",
-    tags: ["EV Charging", "Power Electronics", "Smart Grid"],
-    challenge: "City transportation authority needed to deploy extensive EV charging infrastructure without requiring costly grid upgrades or causing system instability during peak demand periods.",
-    solution: "Created a networked charging system with dynamic load balancing, time-of-use optimization, and integrated battery storage to buffer demand peaks while ensuring reliable charging availability.",
-    outcome: "Successfully deployed 200+ charging stations that automatically adjust charging rates based on grid conditions, vehicle needs, and energy pricing while maintaining grid stability.",
-    technologies: ["Power Electronics", "CCS Protocol", "Load Management Systems", "Energy Storage"]
-  },
+      "Created a machine learning tool that analyzes chart patterns, performs historical lookbacks to find similar patterns, and advises users on optimal trading strategies based on historical performance.",
+    image: "/projects/ml-analysis.jpg",
+    tags: ["Machine Learning", "Pattern Recognition", "Data Analysis"],
+    challenge: "Traders needed an automated way to identify profitable chart patterns and receive data-driven advice on trading decisions based on historical pattern performance.",
+    solution: "Developed a machine learning system that uses computer vision and statistical analysis to identify chart patterns, match them with historical data, and provide probability-based trading recommendations.",
+    outcome: "Created a tool that successfully identifies patterns with high accuracy and provides actionable insights, helping users make more informed trading decisions.",
+    technologies: ["Python", "TensorFlow", "OpenCV", "Scikit-learn", "Matplotlib", "yfinance"]
+  }
 ];
 
 export default function ProjectsPage() {
@@ -308,12 +284,12 @@ export default function ProjectsPage() {
               <div className="mb-12 relative">
                 <div className="absolute -left-[41px] mt-1.5 h-6 w-6 rounded-full border-4 border-gray-900 bg-blue-400"></div>
                 <div>
-                  <h3 className="text-xl font-bold">Campus Microgrid Project</h3>
-                  <p className="text-sm text-gray-400 mb-4">2023 - 2024</p>
+                  <h3 className="text-xl font-bold">TicketBooth Application & Stem Player Device</h3>
+                  <p className="text-sm text-gray-400 mb-4">2025 - Present</p>
                   <p className="text-gray-300">
-                    Led the electrical design for a comprehensive university campus microgrid, incorporating 
-                    renewable energy sources and advanced control systems to create a resilient and 
-                    sustainable power infrastructure.
+                    Currently developing two major projects: a comprehensive seat mapping and ticketing 
+                    application with real-time capabilities, and a hardware music device inspired by the 
+                    Stem Player with advanced audio processing features.
                   </p>
                 </div>
               </div>
@@ -322,12 +298,12 @@ export default function ProjectsPage() {
               <div className="mb-12 relative">
                 <div className="absolute -left-[41px] mt-1.5 h-6 w-6 rounded-full border-4 border-gray-900 bg-blue-400"></div>
                 <div>
-                  <h3 className="text-xl font-bold">Smart Grid Optimization</h3>
-                  <p className="text-sm text-gray-400 mb-4">2022 - 2023</p>
+                  <h3 className="text-xl font-bold">Silverbullet Algorithm</h3>
+                  <p className="text-sm text-gray-400 mb-4">2024</p>
                   <p className="text-gray-300">
-                    Developed an intelligent system using machine learning algorithms to predict and 
-                    optimize power distribution, resulting in significant reductions in energy losses and 
-                    improved reliability during peak usage times.
+                    Developed a sophisticated trading strategy that exploits algorithmic price movements 
+                    during high-liquidity time windows, focusing on Fair Value Gaps and trend-based 
+                    retracement patterns with robust risk management.
                   </p>
                 </div>
               </div>
@@ -336,12 +312,12 @@ export default function ProjectsPage() {
               <div className="mb-12 relative">
                 <div className="absolute -left-[41px] mt-1.5 h-6 w-6 rounded-full border-4 border-gray-900 bg-blue-400"></div>
                 <div>
-                  <h3 className="text-xl font-bold">Industrial Automation Suite</h3>
-                  <p className="text-sm text-gray-400 mb-4">2021 - 2022</p>
+                  <h3 className="text-xl font-bold">ML Pattern Analysis Tool</h3>
+                  <p className="text-sm text-gray-400 mb-4">2024</p>
                   <p className="text-gray-300">
-                    Designed and implemented a comprehensive automation solution for manufacturing 
-                    facilities, including custom PCB design, PLC programming, and advanced control systems 
-                    integration.
+                    Created a machine learning tool that analyzes chart patterns, performs historical 
+                    lookbacks to find similar patterns, and provides data-driven trading advice based on 
+                    statistical analysis and pattern recognition.
                   </p>
                 </div>
               </div>
@@ -350,12 +326,12 @@ export default function ProjectsPage() {
               <div className="relative">
                 <div className="absolute -left-[41px] mt-1.5 h-6 w-6 rounded-full border-4 border-gray-900 bg-blue-400"></div>
                 <div>
-                  <h3 className="text-xl font-bold">Renewable Energy Integration</h3>
-                  <p className="text-sm text-gray-400 mb-4">2020 - 2021</p>
+                  <h3 className="text-xl font-bold">Started University Journey</h3>
+                  <p className="text-sm text-gray-400 mb-4">2021</p>
                   <p className="text-gray-300">
-                    Created a hybrid controller system that seamlessly integrates renewable energy sources 
-                    into existing power networks, with intelligent load balancing and storage management 
-                    capabilities.
+                    Began pursuing Bachelor of Science in Electrical and Electronic Engineering at 
+                    University of Nairobi, focusing on power systems, control theory, and signal processing 
+                    while developing practical programming and analysis skills.
                   </p>
                 </div>
               </div>

@@ -13,39 +13,46 @@ interface TimelineEvent {
 
 const timelineEvents: TimelineEvent[] = [
   {
-    year: "2024",
-    title: "Advanced Power Systems Project",
-    description: "Designed and implemented a smart grid optimization system using machine learning algorithms to reduce energy losses by 15%.",
+    year: "2025",
+    title: "TicketBooth Application",
+    description: "Currently developing a comprehensive seat mapping and ticketing application with real-time booking capabilities and intuitive user interface design.",
     category: "project",
-    icon: "⚡"
+    icon: "🎫"
   },
   {
-    year: "2023",
-    title: "Electrical Engineering Student",
-    description: "Currently pursuing Bachelor's degree with focus on power systems, control theory, and renewable energy integration.",
+    year: "2025",
+    title: "Stem Player Inspired Device",
+    description: "Currently working on a hardware music device inspired by Kanye West's Stem Player, focusing on audio processing and user interaction design.",
+    category: "project",
+    icon: "🎵"
+  },
+  {
+    year: "2024",
+    title: "Silverbullet Algorithm",
+    description: "Developed a trading strategy that exploits algorithmic price movements during high-liquidity windows by entering on retracements in the direction of dominant trends.",
+    category: "project",
+    icon: "📈"
+  },
+  {
+    year: "2024",
+    title: "ML Pattern Analysis Tool",
+    description: "Created a machine learning tool that analyzes chart patterns, performs historical lookbacks to find similar patterns, and advises users on optimal trading strategies.",
+    category: "project",
+    icon: "🤖"
+  },
+  {
+    year: "2021",
+    title: "University of Nairobi - BSE Electrical & Electronic Engineering",
+    description: "Currently in 3rd year pursuing Bachelor of Science in Electrical and Electronic Engineering, focusing on power systems, control theory, and signal processing.",
     category: "education", 
     icon: "🎓"
   },
   {
-    year: "2023",
-    title: "Renewable Energy Integration System",
-    description: "Developed a comprehensive system for seamlessly integrating solar and wind energy sources into existing power networks.",
-    category: "project",
-    icon: "🌱"
-  },
-  {
-    year: "2022",
-    title: "Industrial Automation Internship",
-    description: "Worked on PLC programming and SCADA systems for manufacturing process optimization, gaining hands-on industry experience.",
-    category: "experience",
-    icon: "🏭"
-  },
-  {
-    year: "2022",
-    title: "Smart Home Automation",
-    description: "Created an IoT-based home automation system with energy monitoring, security features, and mobile app control.",
-    category: "project",
-    icon: "🏠"
+    year: "2020",
+    title: "Graduated from Light Academy",
+    description: "Successfully completed high school education at Light Academy, laying the foundation for my engineering journey.",
+    category: "education",
+    icon: "🏫"
   }
 ];
 
