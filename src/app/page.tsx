@@ -11,6 +11,7 @@ import AnimatedButton, { ArrowRightIcon, ExternalLinkIcon } from "@/components/A
 import ParallaxSection from "@/components/ParallaxSection";
 import LiquidGlassCard from "@/components/LiquidGlassCard";
 import { staggerContainer, staggerItem } from "@/utils/animations";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (
@@ -136,7 +137,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        <SpeedInsights></SpeedInsights>
         {/* Tools Section */}
         <section className="py-12 bg-gray-950">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
