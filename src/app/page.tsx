@@ -12,7 +12,7 @@ import ParallaxSection from "@/components/ParallaxSection";
 import LiquidGlassCard from "@/components/LiquidGlassCard";
 import { staggerContainer, staggerItem } from "@/utils/animations";
 import { SpeedInsights } from "@vercel/speed-insights/next"
-
+import { Analytics } from "@vercel/analytics/next"
 export default function Home() {
   return (
     <PageTransition>
@@ -138,6 +138,7 @@ export default function Home() {
           </div>
         </section>
         <SpeedInsights></SpeedInsights>
+        <Analytics></Analytics>
         {/* Tools Section */}
         <section className="py-12 bg-gray-950">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
